@@ -31,8 +31,11 @@ module.exports = {
       allowNull: false,
     },
     player: {
-      type: Sequelize.STRING,
-      allowNull: false,
+      type: Sequelize.INTEGER,
+      references: { model: 'users', key: 'id' },
+      onUpdate: 'CASCADE',
+      onDelete: 'SET NULL',
+      allowNull: true,
     },
     personality: {
       type: Sequelize.STRING,
@@ -56,6 +59,25 @@ module.exports = {
     },
     languages: {
       type: Sequelize.STRING,
+      allowNull: true,
+    },
+    armor_class: {
+      type: Sequelize.INTEGER,
+      allowNull: true,
+    },
+    initiative: {
+      type: Sequelize.INTEGER,
+      allowNull: true,
+    },
+    displacement: {
+      type: Sequelize.STRING,
+      allowNull: true,
+    },
+    status_id: {
+      type: Sequelize.INTEGER,
+      references: { model: 'status', key: 'id' },
+      onUpdate: 'CASCADE',
+      onDelete: 'CASCADE',
       allowNull: true,
     },
     created_at: {
