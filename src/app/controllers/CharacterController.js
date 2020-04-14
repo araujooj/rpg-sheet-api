@@ -1,6 +1,11 @@
 import * as Yup from 'yup';
 import Character from '../models/Character';
+import User from '../models/User';
 import Status from '../models/Status';
+import Magics from '../models/Magics';
+import Equipments from '../models/Equipments';
+import Attacks from '../models/Attacks';
+import Speciality from '../models/Speciality';
 
 class CharacterController {
   async store(req, res) {
@@ -62,6 +67,13 @@ class CharacterController {
       where: {
         player: req.userId,
       },
+      include: [
+        {
+          model: User,
+          as: 'player_info',
+          attributes: ['name', 'email'],
+        },
+      ],
       order: ['id'],
       limit: 5,
       offset: (page - 1) * 5,
@@ -74,6 +86,49 @@ class CharacterController {
     const count = await Character.count();
     res.setHeader('X-Total-Count', count);
     return res.json(characters);
+  }
+
+  async show(req, res) {
+    const { id } = req.params;
+    const character = await Character.findOne({
+      where: {
+        id,
+        player: req.userId,
+      },
+      include: [
+        {
+          model: User,
+          as: 'player_info',
+          attributes: ['name', 'email'],
+        },
+        {
+          model: Status,
+          as: 'status',
+        },
+        {
+          model: Speciality,
+          as: 'expertise',
+        },
+        {
+          model: Magics,
+          as: 'magic_info',
+        },
+        {
+          model: Equipments,
+          as: 'equips_info',
+        },
+        {
+          model: Attacks,
+          as: 'attacks_info',
+        },
+      ],
+    });
+    if (!character) {
+      return res.status(404).json({
+        error: 'Character not found',
+      });
+    }
+    return res.json(character);
   }
 
   async update(req, res) {

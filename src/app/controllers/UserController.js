@@ -37,6 +37,14 @@ class UserController {
     return res.json(users);
   }
 
+  async show(req, res) {
+    const user = await User.findByPk(req.userId);
+    if (!user) {
+      return res.status(404).json({ error: 'Not found any users' });
+    }
+    return res.json(user);
+  }
+
   async update(req, res) {
     const schema = Yup.object().shape({
       name: Yup.string(),

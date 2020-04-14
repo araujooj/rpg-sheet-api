@@ -1,57 +1,94 @@
 module.exports = {
-  up: (queryInterface, Sequelize) => queryInterface.createTable('status', {
+  up: (queryInterface, Sequelize) => queryInterface.createTable('speciality', {
     id: {
       type: Sequelize.INTEGER,
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
     },
-    for: {
+    acrobacy: {
       type: Sequelize.INTEGER,
+
       allowNull: false,
     },
-    dex: {
+    arcanism: {
       type: Sequelize.INTEGER,
+
       allowNull: false,
     },
-    con: {
+    atletism: {
       type: Sequelize.INTEGER,
+
       allowNull: false,
     },
-    int: {
+    acting: {
       type: Sequelize.INTEGER,
+
       allowNull: false,
     },
-    sab: {
+    cheat: {
       type: Sequelize.INTEGER,
+
       allowNull: false,
     },
-    car: {
+    stealth: {
       type: Sequelize.INTEGER,
+
       allowNull: false,
     },
-    mod_for: {
+    story: {
       type: Sequelize.INTEGER,
+
       allowNull: false,
     },
-    mod_dex: {
+    intimidation: {
       type: Sequelize.INTEGER,
+
       allowNull: false,
     },
-    mod_con: {
+    investigation: {
       type: Sequelize.INTEGER,
+
       allowNull: false,
     },
-    mod_int: {
+    animal_petting: {
       type: Sequelize.INTEGER,
+
       allowNull: false,
     },
-    mod_sab: {
+    medicine: {
       type: Sequelize.INTEGER,
+
       allowNull: false,
     },
-    mod_car: {
+    nature: {
       type: Sequelize.INTEGER,
+
+      allowNull: false,
+    },
+    perception: {
+      type: Sequelize.INTEGER,
+
+      allowNull: false,
+    },
+    persuasion: {
+      type: Sequelize.INTEGER,
+
+      allowNull: false,
+    },
+    prestidigitation: {
+      type: Sequelize.INTEGER,
+
+      allowNull: false,
+    },
+    religion: {
+      type: Sequelize.INTEGER,
+
+      allowNull: false,
+    },
+    survival: {
+      type: Sequelize.INTEGER,
+
       allowNull: false,
     },
     created_at: {
@@ -64,5 +101,5 @@ module.exports = {
     },
   }),
 
-  down: (queryInterface) => queryInterface.dropTable('status'),
+  down: (queryInterface) => queryInterface.dropTable('speciality'),
 };

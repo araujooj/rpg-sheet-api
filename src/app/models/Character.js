@@ -19,6 +19,8 @@ class Character extends Model {
         armor_class: Sequelize.INTEGER,
         initiative: Sequelize.INTEGER,
         displacement: Sequelize.STRING,
+        character_id: Sequelize.VIRTUAL,
+        speciality_id: Sequelize.INTEGER,
       },
       {
         sequelize,
@@ -29,8 +31,24 @@ class Character extends Model {
   }
 
   static associate(models) {
-    this.belongsTo(models.Status, { foreignKey: 'status_id', as: 'status' });
-    this.belongsTo(models.User, { foreignKey: 'player' });
+    this.hasOne(models.Status, { foreignKey: 'character_id', as: 'status' });
+    this.hasOne(models.Speciality, {
+      foreignKey: 'character_id',
+      as: 'expertise',
+    });
+    this.belongsTo(models.User, { foreignKey: 'player', as: 'player_info' });
+    this.hasMany(models.Magics, {
+      foreignKey: 'character_id',
+      as: 'magic_info',
+    });
+    this.hasMany(models.Attacks, {
+      foreignKey: 'character_id',
+      as: 'attacks_info',
+    });
+    this.hasMany(models.Equipments, {
+      foreignKey: 'character_id',
+      as: 'equips_info',
+    });
   }
 }
 

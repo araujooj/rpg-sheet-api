@@ -11,7 +11,7 @@ class User extends Model {
         password_hash: Sequelize.STRING,
       },
       {
-        sequelize, /* Parametro do sequelize, e mais opções */
+        sequelize /* Parametro do sequelize, e mais opções */,
       },
     );
 

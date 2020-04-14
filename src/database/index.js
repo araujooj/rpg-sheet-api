@@ -6,10 +6,11 @@ import Magics from '../app/models/Magics';
 import Attacks from '../app/models/Attacks';
 import Equipments from '../app/models/Equipments';
 import Status from '../app/models/Status';
+import Speciality from '../app/models/Speciality';
 
 import databaseConfig from '../config/database';
 
-const models = [User, File, Character, Magics, Attacks, Equipments, Status];
+const models = [User, File, Character, Magics, Attacks, Equipments, Status, Speciality];
 
 class Database {
   constructor() {

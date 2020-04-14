@@ -80,6 +80,13 @@ module.exports = {
       onDelete: 'CASCADE',
       allowNull: true,
     },
+    speciality_id: {
+      type: Sequelize.INTEGER,
+      references: { model: 'speciality', key: 'id' },
+      onUpdate: 'CASCADE',
+      onDelete: 'CASCADE',
+      allowNull: true,
+    },
     created_at: {
       type: Sequelize.DATE,
       allowNull: false,

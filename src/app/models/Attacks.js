@@ -17,7 +17,10 @@ class Attacks extends Model {
   }
 
   static associate(models) {
-    this.belongsTo(models.Character, { foreignKey: 'character_id', as: 'character' });
+    this.belongsTo(models.Character, {
+      foreignKey: 'character_id',
+      as: 'character',
+    });
   }
 }
 

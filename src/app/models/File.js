@@ -14,7 +14,7 @@ class File extends Model {
         },
       },
       {
-        sequelize, /* Parametro do sequelize, e mais opções */
+        sequelize /* Parametro do sequelize, e mais opções */,
       },
     );
     return this;
